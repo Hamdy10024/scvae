@@ -89,9 +89,11 @@ def find_data_set(name, directory):
     data_set = None
 
     json_path = os.path.join(directory, name, name + ".json")
+    print(json_path)
     if os.path.exists(json_path):
         title, data_set = _data_set_from_json_file(json_path)
-
+    else:
+        print("NO JSON FOOL "+json_path)
     if not title:
         for data_set_title, data_set_specifications in data_sets.items():
             if normalise_string(data_set_title) == normalise_string(name):

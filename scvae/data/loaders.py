@@ -255,7 +255,7 @@ def _load_tcga_data_set(paths):
 
     feature_mapping = dict()
     path = paths["feature mapping"]["full"]
-
+    print("Stop MEEEEE")
     with gzip.open(path, mode="rt") as feature_mapping_file:
 
         for row in feature_mapping_file:
