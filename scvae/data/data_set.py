@@ -749,7 +749,7 @@ class DataSet:
 
     def load(self):
         """Load data set."""
-
+        print("LOADING DATA SET")
         sparse_path = self._build_preprocessed_path()
 
         if os.path.isfile(sparse_path):
