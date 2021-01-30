@@ -226,7 +226,7 @@ def _load_tcga_data_set(paths):
     print("I am fucken here   ")
     values, column_headers, row_indices = _load_tab_separated_matrix(
         paths["values"]["full"], numpy.float32)
-
+    print("I am fucken here again champ  ")
     values = values.T
     values = numpy.power(2, values) - 1
     values = numpy.round(values)
@@ -254,19 +254,23 @@ def _load_tcga_data_set(paths):
     # Feature mapping
 
     feature_mapping = dict()
-    path = paths["feature mapping"]["full"]
-    print("Stop MEEEEEEEE "+path)
-    with gzip.open(path, mode="rt") as feature_mapping_file:
+    if  not "feature mapping"  in paths:
+        path = None
+    else :
+        path = paths["feature mapping"]["full"]
+    print("Stop MEEEEEEEE ")
+    if not path is None:
+        with gzip.open(path, mode="rt") as feature_mapping_file:
 
-        for row in feature_mapping_file:
-            if row.startswith("#"):
-                continue
-            row_elements = row.split()
-            feature_name = row_elements[1]
-            feature_id = row_elements[0]
-            if feature_name not in feature_mapping:
-                feature_mapping[feature_name] = []
-            feature_mapping[feature_name].append(feature_id)
+            for row in feature_mapping_file:
+                if row.startswith("#"):
+                    continue
+                row_elements = row.split()
+                feature_name = row_elements[1]
+                feature_id = row_elements[0]
+                if feature_name not in feature_mapping:
+                    feature_mapping[feature_name] = []
+                feature_mapping[feature_name].append(feature_id)
 
     # Dictionary
 
@@ -550,7 +554,7 @@ def _load_development_data_set(**kwargs):
 def _load_values_and_labels_from_matrix(paths, orientation=None):
 
     # Values
-    
+
     values, column_headers, row_indices = _load_tab_separated_matrix(
         paths["values"]["full"], numpy.float32)
 
@@ -757,7 +761,7 @@ def _load_sparse_matrix_in_hdf5_format(path, example_names_key=None,
 def _load_tab_separated_matrix(tsv_path, data_type=None):
 
     tsv_extension = tsv_path.split(os.extsep, 1)[-1]
-
+    print(" lets dooo it "+tsv_extension)
     if tsv_extension == "tsv":
         open_file = open
     elif tsv_extension.endswith("gz"):
@@ -777,7 +781,7 @@ def _load_tab_separated_matrix(tsv_path, data_type=None):
         while not column_headers:
 
             row_elements = next(tsv_file).split()
-
+            print("row number "+ str(len(row_elements)))
             # Skip, if row could not be split into elements
             if len(row_elements) <= 1:
                 continue
@@ -792,7 +796,7 @@ def _load_tab_separated_matrix(tsv_path, data_type=None):
                 break
 
             column_headers = row_elements
-
+        print("mama 5alast ta3aly shatafiny ")
         if column_headers:
             row_elements = next(tsv_file).split()
 
@@ -807,6 +811,7 @@ def _load_tab_separated_matrix(tsv_path, data_type=None):
             )
             column_headers = column_headers[column_header_offset:]
 
+
         def parse_row_elements(row_elements):
             row_index = row_elements[:column_offset]
             if row_index:
@@ -815,9 +820,14 @@ def _load_tab_separated_matrix(tsv_path, data_type=None):
             values.append(row_values)
 
         parse_row_elements(row_elements)
-
+        print("lets loop")
+        lim = 0
         for row in tsv_file:
             parse_row_elements(row.split())
+            lim += 1
+            if lim > 100:
+                break
+        print("wasalt")
 
     values = numpy.array(values, data_type)
 
