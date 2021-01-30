@@ -129,7 +129,7 @@ def train(data_set_file_or_name, data_format=None, data_directory=None,
           models_directory=None, caches_directory=None,
           analyses_directory=None, **keyword_arguments):
     """Train model on data set."""
-
+    print("Train  Model on DATASET")
     if split_data_set is None:
         split_data_set = defaults["data"]["split_data_set"]
     if splitting_method is None:
