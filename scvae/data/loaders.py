@@ -223,7 +223,7 @@ def _load_and_combine_10x_data_sets(paths):
 def _load_tcga_data_set(paths):
 
     # Values, example names, and feature names
-
+    print("I am fucken here   ")
     values, column_headers, row_indices = _load_tab_separated_matrix(
         paths["values"]["full"], numpy.float32)
 
@@ -255,7 +255,7 @@ def _load_tcga_data_set(paths):
 
     feature_mapping = dict()
     path = paths["feature mapping"]["full"]
-    print("Stop MEEEEE")
+    print("Stop MEEEEEEEE "+path)
     with gzip.open(path, mode="rt") as feature_mapping_file:
 
         for row in feature_mapping_file:
@@ -550,9 +550,10 @@ def _load_development_data_set(**kwargs):
 def _load_values_and_labels_from_matrix(paths, orientation=None):
 
     # Values
-
+    
     values, column_headers, row_indices = _load_tab_separated_matrix(
         paths["values"]["full"], numpy.float32)
+
 
     if orientation == "fbe":
         values = values.T

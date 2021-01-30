@@ -161,6 +161,7 @@ class DataSet:
 
         # Find data set
         if title is None or specifications is None:
+            print(self.name+ " "+ directory)
             parsed_title, parsed_specifications = parsing.find_data_set(
                 self.name, directory)
         if title is None:

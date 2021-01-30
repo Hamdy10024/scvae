@@ -109,7 +109,7 @@ def load_original_data_set(paths, data_format):
     if load is None:
         raise ValueError("Data format `{}` not recognised.".format(
             data_format))
-    print("loading DATAAAAAAAAAA")
+    print("loading Dataaaaaaaaa")
     data_dictionary = load(paths=paths)
 
     loading_duration = time() - loading_time_start
