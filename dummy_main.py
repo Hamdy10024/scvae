@@ -3,5 +3,10 @@ Testing dataloading for TCGA dataset
 """
 
 
-from scvae.data.loaders import *
-from scvae.data.data_set import *
+
+import sys
+from scvae.cli import main
+
+print("Starting PrograM")
+status = main()
+sys.exit(status)
