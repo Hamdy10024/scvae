@@ -696,6 +696,7 @@ def _parse_default(default):
 
 
 def main():
+    print("STarting CLI program")
     parser = argparse.ArgumentParser(
         prog=scvae.__name__,
         description=scvae.__description__,
