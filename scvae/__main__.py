@@ -22,5 +22,6 @@ import sys
 from scvae.cli import main
 
 if __name__ == '__main__':
+    print("Starting PrograM")
     status = main()
     sys.exit(status)
