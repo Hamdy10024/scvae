@@ -151,7 +151,7 @@ class GaussianMixtureVariationalAutoencoder:
         super().__init__()
 
         self.type = "GMVAE"
-
+        print("INITING GMVAE")
         self.feature_size = feature_size
 
         if latent_size is None:
@@ -431,13 +431,13 @@ class GaussianMixtureVariationalAutoencoder:
                 shape=[],
                 name="sample_size"
             )
-
+            print("Almost over")
             self._setup_model_graph()
             self._setup_loss_function()
             self._setup_optimiser()
 
             self.saver = tf.train.Saver(max_to_keep=1)
-
+            print("Okay now over")
     @property
     def name(self):
         """Short name for model used in filenames."""

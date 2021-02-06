@@ -203,7 +203,7 @@ def train(data_set_file_or_name, data_format=None, data_directory=None,
             number_of_classes = (
                 training_set.number_of_classes
                 - training_set.number_of_excluded_classes)
-
+    print("done fetching labels")
     model = _setup_model(
         data_set=training_set,
         model_type=model_type,
@@ -229,7 +229,7 @@ def train(data_set_file_or_name, data_format=None, data_directory=None,
         kl_weight=kl_weight,
         models_directory=models_directory
     )
-
+    print("done setting up model")
     print(model.description)
     print()
 
@@ -613,7 +613,7 @@ def _setup_model(data_set, model_type=None,
                  dropout_keep_probabilities=None,
                  number_of_warm_up_epochs=None, kl_weight=None,
                  models_directory=None):
-
+    print("setting up model")
     if model_type is None:
         model_type = defaults["model"]["type"]
     if batch_correction is None:
@@ -658,7 +658,7 @@ def _setup_model(data_set, model_type=None,
             prior_probabilities = data_set.class_probabilities
         else:
             prior_probabilities = None
-
+        print("Loading mmodeel")
         model = GaussianMixtureVariationalAutoencoder(
             feature_size=feature_size,
             latent_size=latent_size,
