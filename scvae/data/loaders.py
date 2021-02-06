@@ -810,6 +810,7 @@ def _load_tab_separated_matrix(tsv_path, data_type=None):
                 len(row_elements) - len(column_headers)
             )
             column_headers = column_headers[column_header_offset:]
+            print(column_headers)
 
 
         def parse_row_elements(row_elements):
