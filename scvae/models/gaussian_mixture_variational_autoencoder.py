@@ -2859,6 +2859,7 @@ class GaussianMixtureVariationalAutoencoder:
             self.q_z_covariances = []
             # Loop over parameter layers for all K gaussians.
             for k in range(self.n_clusters):
+                print(".")
                 if k >= 1:
                     reuse_weights = True
                 else:
