@@ -2844,7 +2844,7 @@ class GaussianMixtureVariationalAutoencoder:
             self.q_y_probabilities = tf.reduce_mean(self.q_y_given_x.probs, 0)
 
         # z latent space
-        print("Z latent scope")
+        print("Z latent scope "+str(self.n_clusters))
         with tf.variable_scope("Z"):
             self.q_z_given_x_y = [None]*self.n_clusters
             z_mean = [None]*self.n_clusters
