@@ -433,6 +433,7 @@ class GaussianMixtureVariationalAutoencoder:
             )
             print("Almost over")
             self._setup_model_graph()
+            print("Done setting up model")
             self._setup_loss_function()
             self._setup_optimiser()
 
@@ -2787,7 +2788,7 @@ class GaussianMixtureVariationalAutoencoder:
 
     def _setup_model_graph(self):
         # Retrieving layers parameterising all distributions in model:
-
+        print("setting up model")
         # Y latent space
         with tf.variable_scope("Y"):
             # p(y) = Cat(pi)
@@ -2823,7 +2824,7 @@ class GaussianMixtureVariationalAutoencoder:
                     ),
                     axis=1
                 )
-
+            print("have no idea what I am doing")
             # q(y|x) = Cat(pi(x))
             identity_matrix = numpy.eye(self.n_clusters)
             y = [
@@ -2843,6 +2844,7 @@ class GaussianMixtureVariationalAutoencoder:
             self.q_y_probabilities = tf.reduce_mean(self.q_y_given_x.probs, 0)
 
         # z latent space
+        print("Z latent scope")
         with tf.variable_scope("Z"):
             self.q_z_given_x_y = [None]*self.n_clusters
             z_mean = [None]*self.n_clusters
@@ -2910,6 +2912,7 @@ class GaussianMixtureVariationalAutoencoder:
             ])
 
         # Decoder for x
+        print(" decodiiinng for x")
         with tf.variable_scope("X"):
             self.p_x_given_z = [None]*self.n_clusters
             for k in range(self.n_clusters):
