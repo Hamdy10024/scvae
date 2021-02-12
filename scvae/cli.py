@@ -242,7 +242,8 @@ def train(data_set_file_or_name, data_format=None, data_directory=None,
         intermediate_analyser = analyses.analyse_intermediate_results
     else:
         intermediate_analyser = None
-
+    print("epochs = {}".format(number_of_epochs))
+    print("minibatch_size  = {}".format(minibatch_size))
     model.train(
         training_set,
         validation_set,
