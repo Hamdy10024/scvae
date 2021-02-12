@@ -257,7 +257,7 @@ def train(data_set_file_or_name, data_format=None, data_directory=None,
         analyses_directory=analyses_directory,
         temporary_log_directory=model_caches_directory
     )
-
+    print("done training model")
     # Remove temporary directories created and emptied during training
     if model_caches_directory and os.path.exists(caches_directory):
         remove_empty_directories(caches_directory)

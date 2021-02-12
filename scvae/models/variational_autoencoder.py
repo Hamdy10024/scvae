@@ -709,7 +709,7 @@ class VariationalAutoencoder:
             "learning rate": learning_rate,
             "minibatch size": minibatch_size
         }
-
+        print("done setting up training data")
         # Earlier model
         old_checkpoint = tf.train.get_checkpoint_state(permanent_log_directory)
         if old_checkpoint:
@@ -952,7 +952,7 @@ class VariationalAutoencoder:
             metadata_log["epochs trained"] = (epoch_start, number_of_epochs)
 
             print(training_string)
-            print()
+            print("started epochs here ")
             training_time_start = time()
 
             for epoch in range(epoch_start, number_of_epochs):
@@ -983,7 +983,7 @@ class VariationalAutoencoder:
                     warm_up_weight = 1.0
 
                 shuffled_indices = numpy.random.permutation(n_examples_train)
-
+                print("in epoch {} , training examples are {}, at batch size {}".format(epoch,n_examples_train,minibatch_size))
                 for i in range(0, n_examples_train, minibatch_size):
 
                     # Internal setup
