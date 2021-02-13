@@ -689,7 +689,7 @@ class VariationalAutoencoder:
                 model=self,
                 timestamp=start_time
             )
-
+        print(" inside Variational autoencoder model")
         if run_id:
             model_string = "model for run {}".format(run_id)
         else:
@@ -779,6 +779,7 @@ class VariationalAutoencoder:
 
         # Stop, if model is already trained
         if epoch_start >= number_of_epochs:
+
             print(training_string)
             return 0
 
@@ -841,7 +842,7 @@ class VariationalAutoencoder:
 
         # Input and output
         if not noisy_preprocess:
-
+            print(" not noisy process")
             if training_set.has_preprocessed_values:
                 x_train = training_set.preprocessed_values
                 if validation_set:
