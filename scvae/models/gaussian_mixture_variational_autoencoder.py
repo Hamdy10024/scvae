@@ -337,7 +337,7 @@ class GaussianMixtureVariationalAutoencoder:
             reconstruction_distribution=self.reconstruction_distribution_name,
             number_of_reconstruction_classes=self.k_max
         )
-
+        print("GMVAE starting model graph")
         with self.graph.as_default():
 
             self.x = tf.placeholder(
@@ -1017,8 +1017,9 @@ class GaussianMixtureVariationalAutoencoder:
             else:
                 print("Initialising model parameters.")
                 initialising_time_start = time()
-
+                print("Running initializer")
                 session.run(tf.global_variables_initializer())
+
                 parameter_summary_writer.add_graph(session.graph)
                 epoch_start = 0
 
@@ -1038,7 +1039,8 @@ class GaussianMixtureVariationalAutoencoder:
             print(training_string)
             print()
             training_time_start = time()
-
+            print("starting epochs gmvae")
+            number_of_epochs = 20
             for epoch in range(epoch_start, number_of_epochs):
 
                 if noisy_preprocess:
