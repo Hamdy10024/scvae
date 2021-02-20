@@ -1019,7 +1019,7 @@ class GaussianMixtureVariationalAutoencoder:
                 initialising_time_start = time()
                 print("Running initializer")
                 session.run(tf.global_variables_initializer())
-
+                print("Done Initializing")
                 parameter_summary_writer.add_graph(session.graph)
                 epoch_start = 0
 
