@@ -826,7 +826,7 @@ def _load_tab_separated_matrix(tsv_path, data_type=None):
         for row in tsv_file:
             parse_row_elements(row.split())
             lim += 1
-            if lim > 10000:
+            if lim > 100:
                 break
         print("wasalt")
 
